@@ -45,6 +45,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -56,9 +58,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,19 +80,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -98,9 +100,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -112,7 +111,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -138,7 +137,7 @@
     <p>A general function for asymmetric chromatographic peaks.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>etg</span>(<span class='no'>x</span>, <span class='no'>H</span>, <span class='no'>t1</span>, <span class='no'>tt</span>, <span class='no'>k1</span>, <span class='no'>kt</span>, <span class='no'>lambda1</span>, <span class='no'>lambdat</span>, <span class='no'>alpha</span>, <span class='no'>beta</span>)</pre>
+    <pre class="usage"><span class='fu'>etg</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>H</span>, <span class='va'>t1</span>, <span class='va'>tt</span>, <span class='va'>k1</span>, <span class='va'>kt</span>, <span class='va'>lambda1</span>, <span class='va'>lambdat</span>, <span class='va'>alpha</span>, <span class='va'>beta</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,6 +193,9 @@
   Functions for Processing Chromatographic Peaks. Anal. Chem., 69
   (21), 4452-4462, 1997.
   <a href='http://dx.doi.org/10.1021/ac970481d'>http://dx.doi.org/10.1021/ac970481d</a></p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Colin A. Smith, <a href='mailto:csmith@scripps.edu'>csmith@scripps.edu</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -206,11 +208,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -218,6 +220,8 @@
 
   
 
+
+  
 
   </body>
 </html>

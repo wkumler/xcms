@@ -48,6 +48,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -59,9 +61,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,19 +83,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -101,9 +103,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -115,7 +114,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -144,7 +143,7 @@
   into the "normal" <code>xcmsRaw</code> slots.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>msn2xcmsRaw</span>(<span class='no'>xmsn</span>)</pre>
+    <pre class="usage"><span class='fu'>msn2xcmsRaw</span><span class='op'>(</span><span class='va'>xmsn</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,14 +164,19 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An xcmsRaw object</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Steffen Neumann <a href='mailto:sneumann@ipb-halle.de'>sneumann@ipb-halle.de</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='xcmsRaw.html'>xcmsRaw</a></code>,</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> <span class='no'>msnfile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"microtofq/MSMSpos20_6.mzML"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"msdata"</span>)
- <span class='no'>xrmsn</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='xcmsRaw.html'>xcmsRaw</a></span>(<span class='no'>msnfile</span>, <span class='kw'>includeMSn</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Create profile matrix with method 'bin' and step 1 ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'> <span class='no'>xr</span> <span class='kw'>&lt;-</span> <span class='fu'>msn2xcmsRaw</span>(<span class='no'>xrmsn</span>)
- <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='findPeaks-methods.html'>findPeaks</a></span>(<span class='no'>xr</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"centWave"</span>)</div><div class='output co'>#&gt; <span class='message'>Detecting mass traces at 25 ppm ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Detecting chromatographic peaks in 10 regions of interest ...</span></div><div class='output co'>#&gt; <span class='message'> OK: 10 found.</span></div></pre>
+    <pre class="examples"><div class='input'> <span class='va'>msnfile</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"microtofq/MSMSpos20_6.mzML"</span>, package <span class='op'>=</span> <span class='st'>"msdata"</span><span class='op'>)</span>
+ <span class='va'>xrmsn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='xcmsRaw.html'>xcmsRaw</a></span><span class='op'>(</span><span class='va'>msnfile</span>, includeMSn<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Create profile matrix with method 'bin' and step 1 ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'> <span class='va'>xr</span> <span class='op'>&lt;-</span> <span class='fu'>msn2xcmsRaw</span><span class='op'>(</span><span class='va'>xrmsn</span><span class='op'>)</span>
+ <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='findPeaks-methods.html'>findPeaks</a></span><span class='op'>(</span><span class='va'>xr</span>, method<span class='op'>=</span><span class='st'>"centWave"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Detecting mass traces at 25 ppm ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>Detecting chromatographic peaks in 10 regions of interest ...</span></div><div class='output co'>#&gt; <span class='message'> OK: 10 found.</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -184,11 +188,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -196,6 +200,8 @@
 
   
 
+
+  
 
   </body>
 </html>

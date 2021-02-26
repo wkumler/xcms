@@ -49,6 +49,8 @@ samples, along the retention time axis in slices of overlapping mz ranges." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -60,9 +62,15 @@ samples, along the retention time axis in slices of overlapping mz ranges." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,19 +84,13 @@ samples, along the retention time axis in slices of overlapping mz ranges." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -102,9 +104,6 @@ samples, along the retention time axis in slices of overlapping mz ranges." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -116,7 +115,7 @@ samples, along the retention time axis in slices of overlapping mz ranges." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -145,16 +144,16 @@ grouping based on the density (distribution) of peaks, found in different
 samples, along the retention time axis in slices of overlapping mz ranges.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>do_groupChromPeaks_density</span>(
-  <span class='no'>peaks</span>,
-  <span class='no'>sampleGroups</span>,
-  <span class='kw'>bw</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>minFraction</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>minSamples</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>binSize</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
-  <span class='kw'>maxFeatures</span> <span class='kw'>=</span> <span class='fl'>50</span>,
-  <span class='kw'>sleep</span> <span class='kw'>=</span> <span class='fl'>0</span>
-)</pre>
+    <pre class="usage"><span class='fu'>do_groupChromPeaks_density</span><span class='op'>(</span>
+  <span class='va'>peaks</span>,
+  <span class='va'>sampleGroups</span>,
+  bw <span class='op'>=</span> <span class='fl'>30</span>,
+  minFraction <span class='op'>=</span> <span class='fl'>0.5</span>,
+  minSamples <span class='op'>=</span> <span class='fl'>1</span>,
+  binSize <span class='op'>=</span> <span class='fl'>0.25</span>,
+  maxFeatures <span class='op'>=</span> <span class='fl'>50</span>,
+  sleep <span class='op'>=</span> <span class='fl'>0</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -250,21 +249,34 @@ Anal. Chem. 2006, 78:779-787.</p>
     <div class='dont-index'><p>Other core peak grouping algorithms: 
 <code><a href='do_groupChromPeaks_nearest.html'>do_groupChromPeaks_nearest</a>()</code>,
 <code><a href='do_groupPeaks_mzClust.html'>do_groupPeaks_mzClust</a>()</code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Colin Smith, Johannes Rainer</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Load the test data set</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>faahKO</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>faahko</span>)
+    <pre class="examples"><div class='input'><span class='co'>## Load the test file</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>faahko_sub</span><span class='op'>)</span>
+<span class='co'>## Update the path to the files for the local system</span>
+<span class='fu'><a href='dirname.html'>dirname</a></span><span class='op'>(</span><span class='va'>faahko_sub</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"cdf/KO"</span>, package <span class='op'>=</span> <span class='st'>"faahKO"</span><span class='op'>)</span>
+
+<span class='co'>## Disable parallel processing for this example</span>
+<span class='fu'>register</span><span class='op'>(</span><span class='fu'>SerialParam</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## Extract the matrix with the identified peaks from the xcmsSet:</span>
-<span class='no'>fts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='xcmsSet-class.html'>peaks</a></span>(<span class='no'>faahko</span>)
+<span class='va'>pks</span> <span class='op'>&lt;-</span> <span class='fu'><a href='XCMSnExp-class.html'>chromPeaks</a></span><span class='op'>(</span><span class='va'>faahko_sub</span><span class='op'>)</span>
 
 <span class='co'>## Perform the peak grouping with default settings:</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>do_groupChromPeaks_density</span>(<span class='no'>fts</span>, <span class='kw'>sampleGroups</span> <span class='kw'>=</span> <span class='fu'><a href='xcmsSet-class.html'>sampclass</a></span>(<span class='no'>faahko</span>))</div><div class='output co'>#&gt; <span class='message'>Processing 3195 mz slices ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'>do_groupChromPeaks_density</span><span class='op'>(</span><span class='va'>pks</span>, sampleGroups <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Processing 2572 mz slices ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'>
 <span class='co'>## The feature definitions:</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>res</span>$<span class='no'>featureDefinitions</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'>
-<span class='co'>## The assignment of peaks from the input matrix to the features</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>res</span>$<span class='no'>peakIndex</span>)</div><div class='output co'>#&gt; NULL</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   mzmed mzmin mzmax    rtmed    rtmin    rtmax npeaks 1           peakidx
+#&gt; 1 279.0 279.0 279.0 2787.765 2787.765 2787.766      2 2           11, 199
+#&gt; 2 286.2 286.2 286.2 3254.904 3250.992 3258.815      2 2          115, 205
+#&gt; 3 300.2 300.2 300.2 3387.143 3379.317 3390.271      4 3 35, 125, 210, 212
+#&gt; 4 301.0 301.0 301.0 2787.766 2786.200 2792.459      3 3       10, 97, 198
+#&gt; 5 305.1 305.1 305.1 2994.338 2994.338 2994.339      2 2           15, 203
+#&gt; 6 305.1 305.1 305.1 2923.917 2923.916 2923.917      2 2           14, 202</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -276,11 +288,11 @@ Anal. Chem. 2006, 78:779-787.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -288,6 +300,8 @@ Anal. Chem. 2006, 78:779-787.</p>
 
   
 
+
+  
 
   </body>
 </html>

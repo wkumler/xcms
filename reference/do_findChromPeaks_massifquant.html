@@ -49,6 +49,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -60,9 +62,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,19 +84,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -102,9 +104,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -116,7 +115,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -146,27 +145,27 @@
     by specifying <code>withWave = TRUE</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>do_findChromPeaks_massifquant</span>(
-  <span class='no'>mz</span>,
-  <span class='no'>int</span>,
-  <span class='no'>scantime</span>,
-  <span class='no'>valsPerSpect</span>,
-  <span class='kw'>ppm</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>peakwidth</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20</span>, <span class='fl'>50</span>),
-  <span class='kw'>snthresh</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>prefilter</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>100</span>),
-  <span class='kw'>mzCenterFun</span> <span class='kw'>=</span> <span class='st'>"wMean"</span>,
-  <span class='kw'>integrate</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>mzdiff</span> <span class='kw'>=</span> -<span class='fl'>0.001</span>,
-  <span class='kw'>fitgauss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>verboseColumns</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>criticalValue</span> <span class='kw'>=</span> <span class='fl'>1.125</span>,
-  <span class='kw'>consecMissedLimit</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>unions</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>checkBack</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>withWave</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>do_findChromPeaks_massifquant</span><span class='op'>(</span>
+  <span class='va'>mz</span>,
+  <span class='va'>int</span>,
+  <span class='va'>scantime</span>,
+  <span class='va'>valsPerSpect</span>,
+  ppm <span class='op'>=</span> <span class='fl'>10</span>,
+  peakwidth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>50</span><span class='op'>)</span>,
+  snthresh <span class='op'>=</span> <span class='fl'>10</span>,
+  prefilter <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>100</span><span class='op'>)</span>,
+  mzCenterFun <span class='op'>=</span> <span class='st'>"wMean"</span>,
+  integrate <span class='op'>=</span> <span class='fl'>1</span>,
+  mzdiff <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.001</span>,
+  fitgauss <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  noise <span class='op'>=</span> <span class='fl'>0</span>,
+  verboseColumns <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  criticalValue <span class='op'>=</span> <span class='fl'>1.125</span>,
+  consecMissedLimit <span class='op'>=</span> <span class='fl'>2</span>,
+  unions <span class='op'>=</span> <span class='fl'>1</span>,
+  checkBack <span class='op'>=</span> <span class='fl'>0</span>,
+  withWave <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -361,31 +360,42 @@ detection" <em>Bioinformatics</em> 2014, 30(18):2636-43.</p>
 <code><a href='do_findChromPeaks_centWave.html'>do_findChromPeaks_centWave</a>()</code>,
 <code><a href='do_findChromPeaks_matchedFilter.html'>do_findChromPeaks_matchedFilter</a>()</code>,
 <code><a href='do_findPeaks_MSW.html'>do_findPeaks_MSW</a>()</code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Christopher Conley</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>faahKO</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>xcms</span>)
-<span class='no'>cdfpath</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"cdf"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"faahKO"</span>)
-<span class='no'>cdffiles</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='no'>cdfpath</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>full.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="examples"><div class='input'>
+<span class='co'>## Load the test file</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>faahko_sub</span><span class='op'>)</span>
+<span class='co'>## Update the path to the files for the local system</span>
+<span class='fu'><a href='dirname.html'>dirname</a></span><span class='op'>(</span><span class='va'>faahko_sub</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"cdf/KO"</span>, package <span class='op'>=</span> <span class='st'>"faahKO"</span><span class='op'>)</span>
 
-<span class='co'>## Read the first file</span>
-<span class='no'>xraw</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='xcmsRaw.html'>xcmsRaw</a></span>(<span class='no'>cdffiles</span>[<span class='fl'>1</span>])</div><div class='output co'>#&gt; <span class='message'>Create profile matrix with method 'bin' and step 1 ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'><span class='co'>## Extract the required data</span>
-<span class='no'>mzVals</span> <span class='kw'>&lt;-</span> <span class='no'>xraw</span>@<span class='kw'>env</span>$<span class='no'>mz</span>
-<span class='no'>intVals</span> <span class='kw'>&lt;-</span> <span class='no'>xraw</span>@<span class='kw'>env</span>$<span class='no'>intensity</span>
+<span class='co'>## Subset to one file and restrict to a certain retention time range</span>
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>filterRt</span><span class='op'>(</span><span class='fu'>filterFile</span><span class='op'>(</span><span class='va'>faahko_sub</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2500</span>, <span class='fl'>3000</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'>## Get m/z and intensity values</span>
+<span class='va'>mzs</span> <span class='op'>&lt;-</span> <span class='fu'>mz</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+<span class='va'>ints</span> <span class='op'>&lt;-</span> <span class='fu'>intensity</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+
 <span class='co'>## Define the values per spectrum:</span>
-<span class='no'>valsPerSpect</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/diff.html'>diff</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>xraw</span>@<span class='kw'>scanindex</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>mzVals</span>)))
+<span class='va'>valsPerSpect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lengths.html'>lengths</a></span><span class='op'>(</span><span class='va'>mzs</span><span class='op'>)</span>
 
-<span class='co'>## Perform the peak detection using massifquant</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>do_findChromPeaks_massifquant</span>(<span class='kw'>mz</span> <span class='kw'>=</span> <span class='no'>mzVals</span>, <span class='kw'>int</span> <span class='kw'>=</span> <span class='no'>intVals</span>,
-<span class='kw'>scantime</span> <span class='kw'>=</span> <span class='no'>xraw</span>@<span class='kw'>scantime</span>, <span class='kw'>valsPerSpect</span> <span class='kw'>=</span> <span class='no'>valsPerSpect</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+<span class='co'>## Perform the peak detection using massifquant - setting prefilter to</span>
+<span class='co'>## a high value to speed up the call for the example</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'>do_findChromPeaks_massifquant</span><span class='op'>(</span>mz <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>mzs</span><span class='op'>)</span>, int <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>ints</span><span class='op'>)</span>,
+    scantime <span class='op'>=</span> <span class='fu'>rtime</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>, valsPerSpect <span class='op'>=</span> <span class='va'>valsPerSpect</span>,
+    prefilter <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>10000</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'> Massifquant, Copyright (C) 2013 Brigham Young University.</span></div><div class='output co'>#&gt; <span class='message'> Massifquant comes with ABSOLUTELY NO WARRANTY. See LICENSE for details.</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'> Detecting  mass traces at 10ppm ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'> 1542 Peaks.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>res</span>)</div><div class='output co'>#&gt;         mz mzmin mzmax    rtmin    rtmax       rt  into maxo
-#&gt; [1,] 400.2 400.2 400.2 4227.522 4263.516 4241.606 24442 2285
-#&gt; [2,] 566.4 566.4 566.4 4128.930 4163.359 4143.014 17955 2348
-#&gt; [3,] 565.4 565.4 565.4 4124.235 4157.099 4139.884 39837 5717
-#&gt; [4,] 524.3 524.3 524.3 4114.845 4144.579 4128.930 27280 1890
-#&gt; [5,] 523.3 523.3 523.3 4108.585 4153.969 4127.365 50588 3707
-#&gt; [6,] 385.2 385.2 385.2 4105.455 4155.534 4128.930 68456 5340</div></pre>
+#&gt; <span class='message'> Detecting  mass traces at 10ppm ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'> 69 Peaks.</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;         mz mzmin mzmax    rtmin    rtmax       rt    into  maxo
+#&gt; [1,] 426.1 426.1 426.1 2963.039 2999.033 2977.124  129958 29408
+#&gt; [2,] 590.3 590.3 590.3 2963.039 2999.033 2978.689  255317 19072
+#&gt; [3,] 454.1 454.1 454.1 2934.870 2975.559 2953.650  372685 20432
+#&gt; [4,] 309.1 309.1 309.1 2905.136 2967.734 2936.435  652140 38888
+#&gt; [5,] 475.2 475.2 475.2 2880.097 2999.033 2934.870 2415224 37160
+#&gt; [6,] 532.2 532.2 532.2 2853.493 2906.701 2878.532  232493 16480</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -397,11 +407,11 @@ detection" <em>Bioinformatics</em> 2014, 30(18):2636-43.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -409,6 +419,8 @@ detection" <em>Bioinformatics</em> 2014, 30(18):2636-43.</p>
 
   
 
+
+  
 
   </body>
 </html>

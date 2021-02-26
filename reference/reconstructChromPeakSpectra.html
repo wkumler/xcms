@@ -40,9 +40,11 @@
 
 
 <meta property="og:title" content="Data independent acquisition (DIA): reconstruct MS2 spectra — reconstructChromPeakSpectra" />
-<meta property="og:description" content="Reconstructs MS2 spectra for each MS1 chromatographic peak (if possible) for
-data independent acquisition (DIA) data (such as SWATH). See the
+<meta property="og:description" content="Reconstructs MS2 spectra for each MS1 chromatographic peak (if possible)
+for data independent acquisition (DIA) data (such as SWATH). See the
 LC-MS/MS analysis vignette for more details and examples." />
+
+
 
 
 
@@ -58,9 +60,15 @@ LC-MS/MS analysis vignette for more details and examples." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -74,19 +82,13 @@ LC-MS/MS analysis vignette for more details and examples." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -100,9 +102,6 @@ LC-MS/MS analysis vignette for more details and examples." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -114,7 +113,7 @@ LC-MS/MS analysis vignette for more details and examples." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,20 +136,21 @@ LC-MS/MS analysis vignette for more details and examples." />
     </div>
 
     <div class="ref-description">
-    <p>Reconstructs MS2 spectra for each MS1 chromatographic peak (if possible) for
-data independent acquisition (DIA) data (such as SWATH). See the
+    <p><em>Reconstructs</em> MS2 spectra for each MS1 chromatographic peak (if possible)
+for data independent acquisition (DIA) data (such as SWATH). See the
 <em>LC-MS/MS analysis</em> vignette for more details and examples.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reconstructChromPeakSpectra</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>expandRt</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>diffRt</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>minCor</span> <span class='kw'>=</span> <span class='fl'>0.8</span>,
-  <span class='kw'>intensity</span> <span class='kw'>=</span> <span class='st'>"maxo"</span>,
-  <span class='kw'>peakId</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='fu'><a href='XCMSnExp-class.html'>chromPeaks</a></span>(<span class='no'>object</span>, <span class='kw'>msLevel</span> <span class='kw'>=</span> <span class='fl'>1L</span>)),
-  <span class='kw'>BPPARAM</span> <span class='kw'>=</span> <span class='fu'>bpparam</span>()
-)</pre>
+    <pre class="usage"><span class='fu'>reconstructChromPeakSpectra</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  expandRt <span class='op'>=</span> <span class='fl'>0</span>,
+  diffRt <span class='op'>=</span> <span class='fl'>2</span>,
+  minCor <span class='op'>=</span> <span class='fl'>0.8</span>,
+  intensity <span class='op'>=</span> <span class='st'>"maxo"</span>,
+  peakId <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='fu'><a href='XCMSnExp-class.html'>chromPeaks</a></span><span class='op'>(</span><span class='va'>object</span>, msLevel <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span><span class='op'>)</span>,
+  BPPARAM <span class='op'>=</span> <span class='fu'>bpparam</span><span class='op'>(</span><span class='op'>)</span>,
+  return.type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"MSpectra"</span>, <span class='st'>"Spectra"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,7 +163,8 @@ data independent acquisition (DIA) data (such as SWATH). See the
       <th>expandRt</th>
       <td><p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code> allowing to expand the retention time range
 for extracted ion chromatograms by a constant value (for the peak
-shape correlation).</p></td>
+shape correlation). Defaults to <code>expandRt = 0</code> hence correlates only
+the signal included in the identified chromatographic peaks.</p></td>
     </tr>
     <tr>
       <th>diffRt</th>
@@ -182,7 +183,8 @@ spectrum reconstruction.</p></td>
       <th>intensity</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> defining the column in the <code>chromPeaks</code>
 matrix that should be used for the intensities of the reconstructed
-spectra's peaks.</p></td>
+spectra's peaks. The same value from the MS1 chromatographic peaks will
+be used as <code>precursorIntensity</code> of the resulting spectra.</p></td>
     </tr>
     <tr>
       <th>peakId</th>
@@ -195,19 +197,35 @@ By default they are reconstructed for all MS1 chromatographic peaks.</p></td>
       <td><p>parallel processing setup. See <code>bpparam()</code> for more
 information.</p></td>
     </tr>
+    <tr>
+      <th>return.type</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> defining the type of the returned object.
+Can be either <code>return.type = "MSpectra"</code> (the default) to return a
+<code><a href='https://lgatto.github.io/MSnbase/reference/MSpectra.html'>MSnbase::MSpectra</a></code> object or <code>return.type = "Spectra"</code> for the newer
+<code><a href='https://rdrr.io/pkg/Spectra/man/Spectra.html'>Spectra::Spectra</a></code> object.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>Spectra()</code> with the reconstructed MS2 spectra for all MS1 peaks
-in <code>object</code>. Contains empty Spectrum2 objects for MS1 peaks for
+    <p>Depending on <code>return.type</code>:</p><ul>
+<li><p><code><a href='https://lgatto.github.io/MSnbase/reference/MSpectra.html'>MSpectra()</a></code> with the reconstructed MS2 spectra for all MS1 peaks
+in <code>object</code>. Contains empty <a href='https://lgatto.github.io/MSnbase/reference/Spectrum2-class.html'>Spectrum2</a> objects for MS1 peaks for
 which reconstruction was not possible (either no MS2 signal was recorded
 or the correlation of the MS2 chromatographic peaks with the MS1
-chromatographic peak was below threshold <code>minCor</code>. <code>Spectra</code> metadata
+chromatographic peak was below threshold <code>minCor</code>. <code>MSpectra</code> metadata
 columns <code>"ms2_peak_id"</code> and <code>"ms2_peak_cor"</code> (of type <code>CharacterList()</code>
 and <code>NumericList()</code> with length equal to the number of peaks per
 reconstructed MS2 spectrum) providing the IDs and the correlation of the
-MS2 chromatographic peaks from which the MS2 spectrum was reconstructed.</p>
+MS2 chromatographic peaks from which the MS2 spectrum was reconstructed.
+As retention time the median retention times of all MS2 chromatographic
+peaks used for the spectrum reconstruction is reported. The MS1
+chromatographic peak intensity is reported as the reconstructed
+spectrum's <code>precursorIntensity</code> value (see parameter <code>intensity</code> above).</p></li>
+<li><p><code>Spectra</code> object (defined in the <code>Spectra</code> package). The same content and
+information than above.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>In detail, the function performs for each MS1 chromatographic peak:</p><ul>
@@ -224,12 +242,15 @@ Each MS2 chromatographic peak selected for an MS1 peak will thus represent
 one <strong>mass peak</strong> in the reconstructed spectrum.</p></li>
 </ul>
 
-<p>The resulting <code>Spectra</code> object provides also the peak IDs of the MS2
+<p>The resulting <code>MSpectra</code> object provides also the peak IDs of the MS2
 chromatographic peaks for each spectrum as well as their correlation value.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='findChromPeaksIsolationWindow.html'>findChromPeaksIsolationWindow()</a></code> for the function to perform MS2
 peak detection in DIA isolation windows and for examples.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Johannes Rainer, Michael Witting</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -242,11 +263,11 @@ peak detection in DIA isolation windows and for examples.</p></div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -254,6 +275,8 @@ peak detection in DIA isolation windows and for examples.</p></div>
 
   
 
+
+  
 
   </body>
 </html>

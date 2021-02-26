@@ -43,7 +43,20 @@
 <meta property="og:description" content="Correlate intensities of two chromatograms with each other. If the two
 Chromatogram objects have different retention times they are first
 aligned to match data points in the first to data points in the second
-chromatogram. See align() for more details." />
+chromatogram. See help on alignRt in MSnbase::Chromatogram() for more
+details.
+If correlate is called on a single MChromatograms() object a pairwise
+correlation of each chromatogram with each other is performed and a matrix
+with the correlation coefficients is returned.
+Note that the correlation of two chromatograms depends also on their order,
+e.g. correlate(chr1, chr2) might not be identical to
+correlate(chr2, chr1). The lower and upper triangular part of the
+correlation matrix might thus be different.
+For correlating elements of a MChromatograms with each other it might be
+sufficient to calculate just the upper triangular matrix. This can be done
+by setting full = FALSE." />
+
+
 
 
 
@@ -59,9 +72,15 @@ chromatogram. See align() for more details." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,19 +94,13 @@ chromatogram. See align() for more details." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -101,9 +114,6 @@ chromatogram. See align() for more details." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -115,7 +125,7 @@ chromatogram. See align() for more details." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -133,7 +143,7 @@ chromatogram. See align() for more details." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Correlate chromatograms</h1>
-    <small class="dont-index">Source: <a href='https://github.com/sneumann/xcms/blob/master/R/methods-Chromatogram.R'><code>R/methods-Chromatogram.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/sneumann/xcms/blob/master/R/methods-Chromatogram.R'><code>R/methods-Chromatogram.R</code></a>, <a href='https://github.com/sneumann/xcms/blob/master/R/methods-MChromatograms.R'><code>R/methods-MChromatograms.R</code></a></small>
     <div class="hidden name"><code>correlate-Chromatogram.Rd</code></div>
     </div>
 
@@ -141,29 +151,61 @@ chromatogram. See align() for more details." />
     <p>Correlate intensities of two chromatograms with each other. If the two
 <code>Chromatogram</code> objects have different retention times they are first
 <em>aligned</em> to match data points in the first to data points in the second
-chromatogram. See <code><a href='align-Chromatogram.html'>align()</a></code> for more details.</p>
+chromatogram. See help on <code>alignRt</code> in <code><a href='https://lgatto.github.io/MSnbase/reference/Chromatogram-class.html'>MSnbase::Chromatogram()</a></code> for more
+details.</p>
+<p>If <code>correlate</code> is called on a single <code>MChromatograms()</code> object a pairwise
+correlation of each chromatogram with each other is performed and a <code>matrix</code>
+with the correlation coefficients is returned.</p>
+<p>Note that the correlation of two chromatograms depends also on their order,
+e.g. <code>correlate(chr1, chr2)</code> might not be identical to
+<code>correlate(chr2, chr1)</code>. The lower and upper triangular part of the
+correlation matrix might thus be different.</p>
+<p>For correlating elements of a <code>MChromatograms</code> with each other it might be
+sufficient to calculate just the upper triangular matrix. This can be done
+by setting <code>full = FALSE</code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for Chromatogram,Chromatogram</span>
-<span class='fu'>correlate</span>(
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>use</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>),
-  <span class='kw'>align</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"matchRtime"</span>, <span class='st'>"approx"</span>),
-  <span class='no'>...</span>
-)</pre>
+<span class='fu'>correlate</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  use <span class='op'>=</span> <span class='st'>"pairwise.complete.obs"</span>,
+  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span><span class='op'>)</span>,
+  align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"closest"</span>, <span class='st'>"approx"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
+
+<span class='co'># S4 method for MChromatograms,missing</span>
+<span class='fu'>correlate</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  y <span class='op'>=</span> <span class='cn'>NULL</span>,
+  use <span class='op'>=</span> <span class='st'>"pairwise.complete.obs"</span>,
+  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span><span class='op'>)</span>,
+  align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"closest"</span>, <span class='st'>"approx"</span><span class='op'>)</span>,
+  full <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
+
+<span class='co'># S4 method for MChromatograms,MChromatograms</span>
+<span class='fu'>correlate</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  y <span class='op'>=</span> <span class='cn'>NULL</span>,
+  use <span class='op'>=</span> <span class='st'>"pairwise.complete.obs"</span>,
+  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span><span class='op'>)</span>,
+  align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"closest"</span>, <span class='st'>"approx"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p><code>Chromatogram()</code> object.</p></td>
+      <td><p><code>Chromatogram()</code> or <code>MChromatograms()</code> object.</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p><code>Chromatogram()</code> object.</p></td>
+      <td><p><code>Chromatogram()</code> or <code>MChromatograms()</code> object.</p></td>
     </tr>
     <tr>
       <th>use</th>
@@ -178,19 +220,55 @@ details.</p></td>
     <tr>
       <th>align</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> defining the alignment method to be used. See
-<code><a href='align-Chromatogram.html'>align()</a></code> for details. The value of this parameter is passed to the
-<code>method</code> parameter of <code>align</code>.</p></td>
+help on <code>alignRt</code> in <code><a href='https://lgatto.github.io/MSnbase/reference/Chromatogram-class.html'>MSnbase::Chromatogram()</a></code> for details. The value of
+this parameter is passed to the <code>method</code> parameter of <code>alignRt</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>optional parameters passed along to the <code>align</code> method.</p></td>
+      <td><p>optional parameters passed along to the <code>alignRt</code> method such as
+<code>tolerance</code> that, if set to <code>0</code> requires the retention times to be
+identical.</p></td>
+    </tr>
+    <tr>
+      <th>full</th>
+      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code> for <code>correlate</code> on a single <code>MChromatograms</code> object:
+whether the <em>full</em> correlation matrix should be calculated (default) or
+just the upper triangular matrix (and diagonal).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code> with the correlation coefficient.</p>
+    <p><code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code> or <code>matrix</code> (if called on <code>MChromatograms</code> objects)
+with the correlation coefficient. If a <code>matrix</code> is returned, the rows
+represent the chromatograms in <code>x</code> and the columns the chromatograms in
+<code>y</code>.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
+    <p>Michael Witting, Johannes Rainer</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>chr1</span> <span class='op'>&lt;-</span> <span class='fu'>Chromatogram</span><span class='op'>(</span>rtime <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span>, sd <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span>,
+    intensity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>29</span>, <span class='fl'>50</span>, <span class='cn'>NA</span>, <span class='fl'>100</span>, <span class='fl'>12</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>chr2</span> <span class='op'>&lt;-</span> <span class='fu'>Chromatogram</span><span class='op'>(</span>rtime <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span>, sd <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span>,
+    intensity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>80</span>, <span class='fl'>50</span>, <span class='fl'>20</span>, <span class='fl'>10</span>, <span class='fl'>9</span>, <span class='fl'>4</span>, <span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>chr3</span> <span class='op'>&lt;-</span> <span class='fu'>Chromatogram</span><span class='op'>(</span>rtime <span class='op'>=</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>9</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>7</span>, sd <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span>,
+    intensity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>53</span>, <span class='fl'>80</span>, <span class='fl'>130</span>, <span class='fl'>15</span>, <span class='fl'>5</span>, <span class='fl'>3</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>chrs</span> <span class='op'>&lt;-</span> <span class='fu'>MChromatograms</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>chr1</span>, <span class='va'>chr2</span>, <span class='va'>chr3</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'>correlate</span><span class='op'>(</span><span class='va'>chr1</span>, <span class='va'>chr2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.03928289</div><div class='input'><span class='fu'>correlate</span><span class='op'>(</span><span class='va'>chr2</span>, <span class='va'>chr1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.06267484</div><div class='input'>
+<span class='co'>## To only intensities larger than 5.</span>
+<span class='fu'>correlate</span><span class='op'>(</span><span class='va'>chr1</span>, <span class='va'>chr2</span>, useIntensitiesAbove <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.03928289</div><div class='input'>
+<span class='fu'>correlate</span><span class='op'>(</span><span class='va'>chrs</span>, <span class='va'>chrs</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;            [,1]       [,2]      [,3]
+#&gt; [1,] 1.00000000 0.03928289 0.9954195
+#&gt; [2,] 0.06267484 1.00000000 0.6482310
+#&gt; [3,] 0.99981446 0.64823104 1.0000000</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -202,11 +280,11 @@ details.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -214,6 +292,8 @@ details.</p></td>
 
   
 
+
+  
 
   </body>
 </html>

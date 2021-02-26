@@ -60,6 +60,8 @@ findChromPeaks() for more information)." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -71,9 +73,15 @@ findChromPeaks() for more information)." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -87,19 +95,13 @@ findChromPeaks() for more information)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -113,9 +115,6 @@ findChromPeaks() for more information)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -127,7 +126,7 @@ findChromPeaks() for more information)." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -161,20 +160,20 @@ identified chromatographic peaks (e.g. on MS1 level using the
 <code><a href='chromatographic-peak-detection.html'>findChromPeaks()</a></code> function but adds newly identified peaks to the existing
 <code><a href='XCMSnExp-class.html'>chromPeaks()</a></code> matrix.</p>
 <p>Isolation windows can be defined with the <code>isolationWindow</code> parameter, that
-by default uses the definition of <code><a href='isolationWindowTargetMz-OnDiskMSnExp-method.html'>isolationWindowTargetMz()</a></code>, i.e.
+by default uses the definition of <code><a href='isolationWindowTargetMz,OnDiskMSnExp-method.html'>isolationWindowTargetMz()</a></code>, i.e.
 chromatographic peak detection is performed for all spectra with the same
 isolation window target m/z (seprarately for each file). The parameter
 <code>param</code> allows to define and configure the peak detection algorithm (see
 <code><a href='chromatographic-peak-detection.html'>findChromPeaks()</a></code> for more information).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>findChromPeaksIsolationWindow</span>(
-  <span class='no'>object</span>,
-  <span class='no'>param</span>,
-  <span class='kw'>msLevel</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>isolationWindow</span> <span class='kw'>=</span> <span class='fu'><a href='isolationWindowTargetMz-OnDiskMSnExp-method.html'>isolationWindowTargetMz</a></span>(<span class='no'>object</span>),
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>findChromPeaksIsolationWindow</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>param</span>,
+  msLevel <span class='op'>=</span> <span class='fl'>2L</span>,
+  isolationWindow <span class='op'>=</span> <span class='fu'><a href='isolationWindowTargetMz,OnDiskMSnExp-method.html'>isolationWindowTargetMz</a></span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -217,6 +216,9 @@ columns in <code><a href='XCMSnExp-class.html'>chromPeakData()</a></code>.</p>
 
     <div class='dont-index'><p><code><a href='reconstructChromPeakSpectra.html'>reconstructChromPeakSpectra()</a></code> for the function to reconstruct
 MS2 spectra for each MS1 chromatographic peak.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Johannes Rainer, Michael Witting</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -229,11 +231,11 @@ MS2 spectra for each MS1 chromatographic peak.</p></div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -241,6 +243,8 @@ MS2 spectra for each MS1 chromatographic peak.</p></div>
 
   
 
+
+  
 
   </body>
 </html>

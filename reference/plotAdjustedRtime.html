@@ -49,6 +49,8 @@ groups) used for the alignment are shown." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -60,9 +62,15 @@ groups) used for the alignment are shown." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,19 +84,13 @@ groups) used for the alignment are shown." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -102,9 +104,6 @@ groups) used for the alignment are shown." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -116,7 +115,7 @@ groups) used for the alignment are shown." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -146,21 +145,21 @@ time (y-axis) for each file along the (adjusted or raw) retention time
 groups) used for the alignment are shown.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plotAdjustedRtime</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"#00000080"</span>,
-  <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>,
-  <span class='kw'>adjustedRtime</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='no'>adjustedRtime</span>, <span class='kw'>yes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='no'>rt</span>[<span class='no'>adj</span>]), <span class='kw'>no</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='no'>rt</span>[<span class='no'>raw</span>])),
-  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='no'>rt</span>[<span class='no'>adj</span>] - <span class='no'>rt</span>[<span class='no'>raw</span>]),
-  <span class='kw'>peakGroupsCol</span> <span class='kw'>=</span> <span class='st'>"#00000060"</span>,
-  <span class='kw'>peakGroupsPch</span> <span class='kw'>=</span> <span class='fl'>16</span>,
-  <span class='kw'>peakGroupsLty</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='no'>ylim</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>plotAdjustedRtime</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  col <span class='op'>=</span> <span class='st'>"#00000080"</span>,
+  lty <span class='op'>=</span> <span class='fl'>1</span>,
+  lwd <span class='op'>=</span> <span class='fl'>1</span>,
+  type <span class='op'>=</span> <span class='st'>"l"</span>,
+  adjustedRtime <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  xlab <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>adjustedRtime</span>, yes <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>rt</span><span class='op'>[</span><span class='va'>adj</span><span class='op'>]</span><span class='op'>)</span>, no <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>rt</span><span class='op'>[</span><span class='va'>raw</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>,
+  ylab <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>rt</span><span class='op'>[</span><span class='va'>adj</span><span class='op'>]</span> <span class='op'>-</span> <span class='va'>rt</span><span class='op'>[</span><span class='va'>raw</span><span class='op'>]</span><span class='op'>)</span>,
+  peakGroupsCol <span class='op'>=</span> <span class='st'>"#00000060"</span>,
+  peakGroupsPch <span class='op'>=</span> <span class='fl'>16</span>,
+  peakGroupsLty <span class='op'>=</span> <span class='fl'>3</span>,
+  <span class='va'>ylim</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -234,37 +233,33 @@ function.</p></td>
 
     <div class='dont-index'><p><code><a href='adjustRtime.html'>adjustRtime</a></code> for all retention time correction/
     alignment methods.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Johannes Rainer</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Below we perform first a peak detection (using the matchedFilter</span>
-<span class='co'>## method) on some of the test files from the faahKO package followed by</span>
-<span class='co'>## a peak grouping and retention time adjustment using the "peak groups"</span>
-<span class='co'>## method</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>faahKO</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>xcms</span>)
-<span class='no'>fls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>dir</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"cdf/KO"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"faahKO"</span>), <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-           <span class='kw'>full.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="examples"><div class='input'>
+<span class='co'>## Load a test data set with detected peaks</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>faahko_sub</span><span class='op'>)</span>
+<span class='co'>## Update the path to the files for the local system</span>
+<span class='fu'><a href='dirname.html'>dirname</a></span><span class='op'>(</span><span class='va'>faahko_sub</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"cdf/KO"</span>, package <span class='op'>=</span> <span class='st'>"faahKO"</span><span class='op'>)</span>
 
-<span class='co'>## Reading 2 of the KO samples</span>
-<span class='no'>raw_data</span> <span class='kw'>&lt;-</span> <span class='fu'>readMSData</span>(<span class='no'>fls</span>[<span class='fl'>1</span>:<span class='fl'>2</span>], <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"onDisk"</span>)</div><div class='output co'>#&gt; <span class='message'>Polarity can not be extracted from netCDF files, please set manually the polarity with the 'polarity' method.</span></div><div class='input'>
-<span class='co'>## Perform the peak detection using the matchedFilter method.</span>
-<span class='no'>mfp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='findChromPeaks-matchedFilter.html'>MatchedFilterParam</a></span>(<span class='kw'>snthresh</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>binSize</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='chromatographic-peak-detection.html'>findChromPeaks</a></span>(<span class='no'>raw_data</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='no'>mfp</span>)
+<span class='co'>## Disable parallel processing for this example</span>
+<span class='fu'>register</span><span class='op'>(</span><span class='fu'>SerialParam</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## Performing the peak grouping using the "peak density" method.</span>
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='groupChromPeaks-density.html'>PeakDensityParam</a></span>(<span class='kw'>sampleGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>))
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='groupChromPeaks.html'>groupChromPeaks</a></span>(<span class='no'>res</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='no'>p</span>)</div><div class='output co'>#&gt; <span class='message'>Processing 3195 mz slices ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'>
+<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='groupChromPeaks-density.html'>PeakDensityParam</a></span><span class='op'>(</span>sampleGroups <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='groupChromPeaks.html'>groupChromPeaks</a></span><span class='op'>(</span><span class='va'>faahko_sub</span>, param <span class='op'>=</span> <span class='va'>p</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Processing 2572 mz slices ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'>
 <span class='co'>## Perform the retention time adjustment using peak groups found in both</span>
 <span class='co'>## files.</span>
-<span class='no'>fgp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='adjustRtime-peakGroups.html'>PeakGroupsParam</a></span>(<span class='kw'>minFraction</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='adjustRtime.html'>adjustRtime</a></span>(<span class='no'>res</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='no'>fgp</span>)</div><div class='output co'>#&gt; <span class='message'>Performing retention time correction using 39 peak groups.</span></div><div class='output co'>#&gt; <span class='message'>Applying retention time adjustment to the identified chromatographic peaks ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'>
-<span class='co'>## Visualize the impact of the alignment. We show both versions of the plot,</span>
-<span class='co'>## with the raw retention times on the x-axis (top) and with the adjusted</span>
-<span class='co'>## retention times (bottom).</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>mfrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
-<span class='fu'>plotAdjustedRtime</span>(<span class='no'>res</span>, <span class='kw'>adjusted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='fu'><a href='https://rdrr.io/r/graphics/grid.html'>grid</a></span>()
-<span class='fu'>plotAdjustedRtime</span>(<span class='no'>res</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/grid.html'>grid</a></span>()</div><div class='img'><img src='plotAdjustedRtime-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='va'>fgp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='adjustRtime-peakGroups.html'>PeakGroupsParam</a></span><span class='op'>(</span>minFraction <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='adjustRtime.html'>adjustRtime</a></span><span class='op'>(</span><span class='va'>res</span>, param <span class='op'>=</span> <span class='va'>fgp</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Performing retention time correction using 19 peak groups.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Span too small for 'loess' and the available number of peak groups, resetting to 0.21</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Adjusted retention times had to be re-adjusted for some files to ensure them being in the same order than the raw retention times. A call to 'dropAdjustedRtime' might thus fail to restore retention times of chromatographic peaks to their original values. Eventually consider to increase the value of the 'span' parameter.</span></div><div class='output co'>#&gt; <span class='message'>Applying retention time adjustment to the identified chromatographic peaks ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='input'>
+<span class='co'>## Visualize the impact of the alignment.</span>
+<span class='fu'>plotAdjustedRtime</span><span class='op'>(</span><span class='va'>res</span>, adjusted <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/grid.html'>grid</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='img'><img src='plotAdjustedRtime-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -276,11 +271,11 @@ function.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -288,6 +283,8 @@ function.</p></td>
 
   
 
+
+  
 
   </body>
 </html>

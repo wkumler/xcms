@@ -49,6 +49,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -60,9 +62,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,19 +84,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">xcms</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.11.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.13.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/xcms.html">Get started</a>
 </li>
 <li>
@@ -102,9 +104,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/new_functionality.html">New and modified functionality in xcms</a>
-    </li>
-    <li>
       <a href="../articles/xcms-direct-injection.html">Grouping FTICR-MS data with xcms</a>
     </li>
     <li>
@@ -116,7 +115,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/sneumann/xcms/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -271,14 +270,21 @@
       above for more information.</p></dd>
     <dt>sortMz</dt><dd><p><code>signature(object = "xcmsRaw")</code>: sort the data points
       by increasing m/z for each scan</p></dd>
-	<dt>stitch</dt><dd><p><code>signature(object = "xcmsRaw")</code>: Raw data correction for
-	  lock mass calibration gaps.</p></dd>
-  
+    <dt>stitch</dt><dd><p><code>signature(object = "xcmsRaw")</code>: Raw data correction for
+      lock mass calibration gaps.</p></dd>
+    <dt>findmzROI</dt><dd><p><code>signature(object = "xcmsRaw")</code>:
+	internal function to identify regions of interest in the raw
+	data as part of the first step of centWave-based peak detection.</p></dd>
+    
 </dl>
 
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Colin A. Smith, <a href='mailto:csmith@scripps.edu'>csmith@scripps.edu</a>,
+  Johannes Rainer <a href='mailto:johannes.rainer@eurac.edu'>johannes.rainer@eurac.edu</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='xcmsRaw.html'>xcmsRaw</a></code>, <code><a href='sub-xcmsRaw-logicalOrNumeric-missing-missing-method.html'>subset-xcmsRaw</a></code> for subsetting by spectra.</p></div>
+    <div class='dont-index'><p><code><a href='xcmsRaw.html'>xcmsRaw</a></code>, <code><a href='[,xcmsRaw,logicalOrNumeric,missing,missing-method.html'>subset-xcmsRaw</a></code> for subsetting by spectra.</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -291,11 +297,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Steffen Neumann.</p>
+  <p><p>Developed by Steffen Neumann.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -303,6 +309,8 @@
 
   
 
+
+  
 
   </body>
 </html>
